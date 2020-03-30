@@ -9,7 +9,7 @@ using WebAPISample.Models;
 
 namespace WebAPISample.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] 
     [ApiController]
     public class MovieController : ControllerBase
     {
@@ -23,16 +23,18 @@ namespace WebAPISample.Controllers
         public IActionResult Get()
         {
             // Retrieve all movies from db logic
-            return Ok(new string[] { "movie1 string", "movie2 string" });
+            var movieList = _context.Movies.ToList(); // sends back a list of movies
+            return Ok(movieList);
         }
 
         // GET api/movie/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("{id}")] // get movie by id
+        public IActionResult Get(int id) // trying to use postman to send an id and get a single movie
         {
             // Retrieve movie by id from db logic
+            var movie = _context.Movies.Where(m => m.MovieId == id).SingleOrDefault();
             // return Ok(movie);
-            return Ok();
+            return Ok(new string[] { movie.Title, movie.Genre, movie.Director });
         }
 
         // POST api/movie
@@ -48,6 +50,8 @@ namespace WebAPISample.Controllers
         public IActionResult Put([FromBody] Movie movie)
         {
             // Update movie in db logic
+            _context.Movies.Add(movie);
+            _context.SaveChanges();
             return Ok();
         }
 

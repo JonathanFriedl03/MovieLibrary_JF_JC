@@ -22,5 +22,34 @@
         e.preventDefault();
     }
 
+
     $('#my-form').submit( processForm );
+
+    $(document).ready(function(){
+      $.ajax({
+          url: 'https://localhost:44325/api/movie',
+          dataType: 'json',
+          type: 'get',
+          contentType: 'application/json',
+          success: function( data, textStatus, jQxhr ){
+
+            var header = $(" <tr><th> " + 'Title ' + " </th> <th> " + "Genre " + "</th><th> " + "Director"+ " </th><tr> ");
+
+            $("#response pre").append(header);
+            for(let i = 0; i < data.length; i ++ ){
+
+              let title = data[i]["title"];
+              let genre = data[i]["genre"];
+              let director = data[i]["director"];
+              var movie = $(" <tr><td> "+ title +" </td><td> "+ genre +" </td><td> "+ director +" </td> ");
+              $("#response pre").append(movie);
+            }
+
+            //  $('#response pre').html( data );
+          },
+          error: function( jqXhr, textStatus, errorThrown ){
+              console.log( errorThrown );
+          }
+      });
+    })
 })(jQuery);
