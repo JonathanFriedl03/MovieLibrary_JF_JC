@@ -17,17 +17,51 @@
                 $('#response pre').html( data );
             },
             error: function( jqXhr, textStatus, errorThrown ){
-                console.log( errorThrown );
-            }
-        }).then(location.reload());
+                console.log( errorThrown );}
+        });
 
         e.preventDefault();
+        setTimeout(function() {
+             window.location.reload();
+        },10);
     }
     
     $('#my-form').submit( processForm );
   })(jQuery);
 
-  
+  (function($){
+    function processEditForm( e ){
+      
+      let id = $("#movieSelector option:selected").val();
+        var dict = {
+          movieId: parseInt(id),
+        	title : this["title"].value,
+          genre : this["genre"].value,
+        	director: this["director"].value
+        };
+
+        $.ajax({
+            url: 'https://localhost:44325/api/movie/',
+            dataType: 'json',
+            type: 'put',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function( data, textStatus, jQxhr ){
+                $('#response pre').html( data );
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );}
+        });
+
+        e.preventDefault();
+        setTimeout(function() {
+             window.location.reload();
+        },10);
+    }
+    
+    $('#my-edit-form').submit( processEditForm );
+  })(jQuery);
+
    $("#getMovieButton").click(function(){
     var edit = document.getElementById("editContainer");
     var add = document.getElementById("addContainer");
