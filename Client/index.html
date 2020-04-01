@@ -6,42 +6,54 @@
     <meta charset="utf-8">
 </head>
 <body  class="bg-dark text-white">
-<div class="container">
-    <!-- Section header -->
-    <h4 class="display-4 text-center">Add Movie</h4>
+    <div class="container"> <!-- ADD MOVIE CONTAINER -->
+        <!-- Section header -->
+        <h4 class="display-4 text-center">Add Movie</h4>
 
-    <!-- Form -->
-    <form id="create-form" class="form-group text-center ">
+        <!-- Form -->
+        <form id="my-form" class="form-group text-center ">
+            <div class="row">
+                <input type="text" name="title" class="col-sm-3 mr-2 form-control" placeholder="Title" />
+                <input type="text" name="genre" class="col-sm-3 mr-2 form-control" placeholder="Genre" />
+                <input type="text" name="director" class="col-sm-3 mr-2 form-control" placeholder="Director" />
+                
+                <button type="submit" class="btn btn-info">Add Movie</button>
+            </div>
+        </form>
+
+        <!-- FIND MOVIE CONTAINER -->
+        <!-- Selection header -->
+        <h4 class="display-4 text-center">Find Movie</h4>
         <div class="row">
-            <input type="text" name="title" class="col-sm-3 mr-2 form-control" placeholder="Title" />
-            <input type="text" name="genre" class="col-sm-3 mr-2 form-control" placeholder="Genre" />
-            <input type="text" name="director" class="col-sm-3 mr-2 form-control" placeholder="Director" />
-            
-            <button type="submit" class="btn btn-info">Add Movie</button>
+            <select id="movieSelector" class="form-control col-sm-3 mr-2" placeholder="Select Movie">
+                <option value="" disabled>pick a movie</option>
+                <option value="1" selected>Movie 1</option>
+                <option value="2">Movie 2</option>
+                <option value="3">Movie 3</option>
+                <option value="4">Movie 4</option>
+                <option value="5">Movie 5</option>
+            </select>
+            <button type="submit" id="getMovieButton" class="btn btn-info">Movie Details</button>
         </div>
-    </form>
-
-    <!-- Selection header -->
-    <h4 class="display-4 text-center">Find Movie</h4>
-    <form id="getMovieForm" class="form-group">
-        <div class="row">
-        <select id="movieSelector" class="form-control col-sm-3 mr-2" placeholder="Select Movie">
-            <option value="" disabled>pick a movie</option>
-            <option value="1" selected>Movie 1</option>
-            <option value="2">Movie 2</option>
-            <option value="3">Movie 3</option>
-            <option value="4">Movie 4</option>
-            <option value="5">Movie 5</option>
-        </select>
-        <button id="getMovieButton" class="btn btn-info">Movie Details</button>
     </div>
-    </form>
+
+    <!-- SEARCH RESULTS -->
+    <div class="container mt-4">
+        <div class="row">
+        <table id="search" class="table table-borderless col-sm-12">
+            <!-- stuff from script here -->
+        </table>
+        </div>
+    </div>
 
     <!-- Display Area -->
-    <div id="response">
-        <pre></pre>
+    <div class="container mt-4">
+        <div id="response" class="row">
+            <table id="movies" class="bg-light text-black table-border table table-striped col-sm-12">
+                <!-- stuff from script here -->
+            </table>
+        </div>
     </div>
-</div>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
