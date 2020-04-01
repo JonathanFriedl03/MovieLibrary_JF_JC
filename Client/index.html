@@ -6,13 +6,42 @@
     <meta charset="utf-8">
 </head>
 <body  class="bg-dark text-white">
-    <div class="container"> <!-- ADD MOVIE CONTAINER -->
+    
+    <div class="container ">
+        <!-- FIND MOVIE CONTAINER -->
+        <!-- Selection header -->
+        <h4 class="display-4 text-center">Movie Library</h4>
+        <hr class="bg-white col-sm-9">
+        <div class="row justify-content-center">
+            
+            <button type="submit" id="addMovieButton" class="btn btn-success mr-2 col-sm-2">Add</button>
+            <button type="submit" id="getMovieButton" class="btn btn-info mr-2 col-sm-2"> Details</button>
+            <select id="movieSelector" class="form-control col-sm-3 mr-2" placeholder="Select Movie">
+                <option value="" disabled selected>pick a movie</option>
+            </select>
+            <button type="submit" id="editMovieButton" class="btn btn-warning mr-2 col-sm-2">Edit</button>
+            <button type="submit" id="deleteMovieButton" class="btn btn-danger col-sm-2">Delete</button>
+
+        </div>
+    </div>
+    
+    <!-- SEARCH RESULTS -->
+    <div class="container mt-2">
+        <div class="row">
+        <table id="search" class="table table-borderless">
+            <!-- stuff from script here -->
+        </table>
+        </div>
+    </div>
+    
+<!-- ADD/Edit MOVIE CONTAINER -->
+    <div class="container" id="addContainer" style="display:none;" > 
         <!-- Section header -->
-        <h4 class="display-4 text-center">Add Movie</h4>
+        <h5 class="display-5 text-center mt-2">Add Movie</h5>
 
         <!-- Form -->
         <form id="my-form" class="form-group text-center ">
-            <div class="row">
+            <div class="row justify-content-center">
                 <input type="text" name="title" class="col-sm-3 mr-2 form-control" placeholder="Title" />
                 <input type="text" name="genre" class="col-sm-3 mr-2 form-control" placeholder="Genre" />
                 <input type="text" name="director" class="col-sm-3 mr-2 form-control" placeholder="Director" />
@@ -20,34 +49,27 @@
                 <button type="submit" class="btn btn-info">Add Movie</button>
             </div>
         </form>
-
-        <!-- FIND MOVIE CONTAINER -->
-        <!-- Selection header -->
-        <h4 class="display-4 text-center">Find Movie</h4>
-        <div class="row">
-            <select id="movieSelector" class="form-control col-sm-3 mr-2" placeholder="Select Movie">
-                <option value="" disabled>pick a movie</option>
-                <option value="1" selected>Movie 1</option>
-                <option value="2">Movie 2</option>
-                <option value="3">Movie 3</option>
-                <option value="4">Movie 4</option>
-                <option value="5">Movie 5</option>
-            </select>
-            <button type="submit" id="getMovieButton" class="btn btn-info">Movie Details</button>
-        </div>
     </div>
 
-    <!-- SEARCH RESULTS -->
-    <div class="container mt-4">
-        <div class="row">
-        <table id="search" class="table table-borderless col-sm-12">
-            <!-- stuff from script here -->
-        </table>
-        </div>
+    <div class="container justify-content-center" id="editContainer" style="display:none;" > <!-- ADD/Edit MOVIE CONTAINER -->
+        <!-- Section header -->
+        <h5 class="display-5 text-center mt-2">Edit Movie</h5>
+
+        <!-- Form -->
+        <form id="my-edit-form" class="form-group text-center ">
+            <div class="row justify-content-center">
+                <input type="text" name="title" class="col-sm-3 mr-2 form-control" placeholder="Title" />
+                <input type="text" name="genre" class="col-sm-3 mr-2 form-control" placeholder="Genre" />
+                <input type="text" name="director" class="col-sm-3 mr-2 form-control" placeholder="Director" />
+                
+                <button type="submit" class="btn btn-info">Submit Changes</button>
+            </div>
+        </form>
     </div>
+
 
     <!-- Display Area -->
-    <div class="container mt-4">
+    <div class="container">
         <div id="response" class="row">
             <table id="movies" class="bg-light text-black table-border table table-striped col-sm-12">
                 <!-- stuff from script here -->
